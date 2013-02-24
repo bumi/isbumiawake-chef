@@ -4,8 +4,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'isbumiawake/chef/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = Isbumiawake::Chef::VERSION
-  gem.version       = "0.1.0"
+  gem.name          = "isbumiawake-chef"
+  gem.version       = Isbumiawake::Chef::VERSION
   gem.authors       = ["Michael Bumann"]
   gem.email         = ["michael@railslove.com"]
   gem.description   = %q{Chef Handler to notify isbumiawake to track if the peritically chef run is running}
