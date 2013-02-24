@@ -5,7 +5,7 @@ module Isbumiawake
     class Handler < ::Chef::Handler
 
       def initialize(args)
-        @url = args[:url]
+        @url = args["url"]
       end
 
       def report
