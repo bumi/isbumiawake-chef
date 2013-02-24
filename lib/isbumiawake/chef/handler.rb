@@ -1,4 +1,5 @@
 require "net/http"
+require "open-uri"
 require 'chef/handler'
 module Isbumiawake
   module Chef
@@ -9,7 +10,7 @@ module Isbumiawake
       end
 
       def report
-        Net::HTTP.post_form(self.url, :message => self.message).body
+        open(self.url)#, :message => self.message).body
       end
 
       def url
@@ -17,7 +18,7 @@ module Isbumiawake
       end
 
       def message
-        "Chef run on node #{node.fqdn} #{status} completed in #{elapsed_time} (#{start_time}-#{end_time}) and updated: #{updated_resources.join(",")}"
+        "Chef run on node #{node.fqdn} #{success? ? "successfully" : "NOT successfully"} completed in #{elapsed_time} (#{start_time}-#{end_time}) and updated: #{updated_resources.join(",")}"
       end
     end
   end
