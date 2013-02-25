@@ -1,5 +1,4 @@
-require "net/http"
-require "open-uri"
+require "rest_client"
 require 'chef/handler'
 module Isbumiawake
   module Chef
@@ -10,11 +9,7 @@ module Isbumiawake
       end
 
       def report
-        open(self.url)#, :message => self.message).body
-      end
-
-      def url
-        URI.parse(@url)
+        RestClient.post @url, :message => self.message
       end
 
       def message
