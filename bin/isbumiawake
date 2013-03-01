@@ -6,4 +6,5 @@ if ARGV[0].nil?
   puts "please provide an isbumiawake token as first argument"
   exit(1)
 end
-Isbumiawake.notify(ARGV[0], :message => ARGV[1])
+message = ARGV[1] || STDIN.read
+Isbumiawake.notify(ARGV[0], :message => message)
