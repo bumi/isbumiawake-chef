@@ -3,7 +3,7 @@
 require "isbumiawake"
 
 if ARGV[0].nil?
-  puts "please provide an isbumiawake token as first argument"
+  puts "please provide an isbumiawake token as first argument: isbumiawake TOKEN [MESSAGE]"
   exit(1)
 end
 message = ARGV[1] || STDIN.read
