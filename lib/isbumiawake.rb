@@ -8,7 +8,7 @@ module Isbumiawake
   end
 
   def self.url_for(token_or_url)
-    if token_or_url =~ /https?:\/\//i
+    if token_or_url =~ /^https?:\/\//i
       token_or_url
     else
       "https://isbumiawake.herokuapp.com/c/#{token_or_url}"
