@@ -18,7 +18,7 @@ module Isbumiawake
           desc "notify isbumiawake"
           task :notify do
             require "isbumiawake"
-            ::Isbumiawake.notify(@token, @message)
+            ::Isbumiawake.notify(@token, :message => @message)
           end
         end
 
