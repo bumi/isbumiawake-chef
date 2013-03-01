@@ -2,11 +2,21 @@ require "spec_helper"
 describe Isbumiawake::Chef::Handler do
   subject { Isbumiawake::Chef::Handler.new("url" => "http://isbumiawake.com/foo") }
 
+  # we support both. providing a token or a url param
+  context "with token" do
+    subject { Isbumiawake::Chef::Handler.new("token" => "libanon") }
+    its(:token) { should eql("libanon") }
+  end
+
+  context "with url" do
+    subject { Isbumiawake::Chef::Handler.new("url" => "libanon") }
+    its(:token) { should eql("libanon") }
+  end
 
   describe "report" do
     let(:handler) { Isbumiawake::Chef::Handler.new("url" => "http://Isbumiawake.com/foo") }
     before { handler.should_receive(:message).and_return("chef report") }
-    before { RestClient.should_receive(:post).with("http://Isbumiawake.com/foo", {:message => "chef report"}).and_return("yeah") }
+    before { Isbumiawake.should_receive(:notify).with("http://Isbumiawake.com/foo", {:message => "chef report"}).and_return("yeah") }
     subject { handler }
     its(:report) { should eql("yeah") } # just check for the return value and mock the net http part
   end

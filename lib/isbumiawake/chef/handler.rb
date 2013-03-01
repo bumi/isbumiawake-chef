@@ -1,15 +1,15 @@
-require "rest_client"
+require "isbumiawake"
 require 'chef/handler'
 module Isbumiawake
   module Chef
     class Handler < ::Chef::Handler
-
+      attr_accessor :token
       def initialize(args)
-        @url = args["url"]
+        @token = args["url"] || args["token"]
       end
 
       def report
-        RestClient.post @url, :message => self.message
+        Isbumiawake.notify @token, :message => self.message
       end
 
       def message
