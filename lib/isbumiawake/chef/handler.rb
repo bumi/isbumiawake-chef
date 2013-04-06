@@ -9,6 +9,8 @@ module Isbumiawake
       end
 
       def report
+        ::Chef::Log.info("sending notification to isbumiawake:")
+        ::Chef::Log.info(self.message)
         Isbumiawake.notify @token, :message => self.message
       end
 

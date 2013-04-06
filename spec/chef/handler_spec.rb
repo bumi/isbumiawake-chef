@@ -15,7 +15,7 @@ describe Isbumiawake::Chef::Handler do
 
   describe "report" do
     let(:handler) { Isbumiawake::Chef::Handler.new("url" => "http://Isbumiawake.com/foo") }
-    before { handler.should_receive(:message).and_return("chef report") }
+    before { handler.should_receive(:message).twice.and_return("chef report") }
     before { Isbumiawake.should_receive(:notify).with("http://Isbumiawake.com/foo", {:message => "chef report"}).and_return("yeah") }
     subject { handler }
     its(:report) { should eql("yeah") } # just check for the return value and mock the net http part
