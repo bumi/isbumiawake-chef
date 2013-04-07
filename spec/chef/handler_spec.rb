@@ -29,10 +29,9 @@ describe Isbumiawake::Chef::Handler do
       handler.should_receive(:elapsed_time).and_return(10)
       handler.should_receive(:start_time).and_return("12:34")
       handler.should_receive(:end_time).and_return("12:45")
-      handler.should_receive(:updated_resources).and_return(["list", "of", "resources"])
     }
     subject { handler }
-    its(:message) { should eql("Chef run on node host successfully completed in 10 (12:34-12:45) and updated: list,of,resources") }
+    its(:message) { should eql("Chef run on node host successfully completed in 10 (12:34-12:45)") }
   end
 
 end
